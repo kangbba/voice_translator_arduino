@@ -1,11 +1,9 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <driver/i2s.h>
+#include "credentials.h"  // WiFi 정보가 포함된 파일을 추가
 
-// WiFi 설정
-const char* ssid = "SK_WiFiGIGA97BE_2.4G";  // 자신의 WiFi SSID로 변경
-const char* password = "AWKB0@6876";        // 자신의 WiFi 패스워드로 변경
-const char* serverUrl = "http://192.168.75.215:3000/audio"; // Node.js 서버 IP와 포트
+const char* serverUrl = "http://192.168.75.33:3000/audio"; // Node.js 서버 IP와 포트
 
 // 저주파 통과 필터 함수
 int lowPassFilter(int16_t currentSample, int16_t previousSample, float alpha) {
