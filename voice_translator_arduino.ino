@@ -17,7 +17,7 @@ int lowPassFilter(int16_t currentSample, int16_t previousSample, float alpha) {
 void setupI2SMicrophone() {
   i2s_config_t i2s_config = {
     .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX),
-    .sample_rate = 16000,  // 샘플 레이트 설정 (Google Speech-to-Text의 경우 16000 Hz 권장)
+    .sample_rate = 8000,  // 샘플 레이트 설정 (Google Speech-to-Text의 경우 16000 Hz 권장)
     .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
     .channel_format = I2S_CHANNEL_FMT_ONLY_LEFT,
     .communication_format = I2S_COMM_FORMAT_I2S_MSB,
@@ -65,7 +65,7 @@ void loop() {
   int16_t i2sData[512];  // I2S 데이터 배열
   size_t bytesRead = 0;
   int gain = 7;          // 신호 증폭 비율
-  int threshold = 200;   // 노이즈 게이트 임계값
+  int threshold = 200;   // 노이즈 게이트 임계값 original : 200
   int16_t previousSample = 0;
   float alpha = 0.95;    // 저주파 통과 필터의 강도
 
